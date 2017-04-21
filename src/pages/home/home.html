@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Gathered</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+   <ion-card *ngIf="dashboard">
+    <ion-card-header>
+        Next Event
+      </ion-card-header>
+     <!-- <img src="{{dashboard.next_event.photo_url}}"/> -->
+     <ion-card-content>
+       <ion-card-title>
+         {{dashboard.next_event.name}}
+         </ion-card-title>
+         <p ng-bind-html="dashboard.next_event.description"></p>
+     </ion-card-content>
+   </ion-card>
+   <ion-card *ngIf="dashboard">
+    <ion-card-header>
+        Last Event
+      </ion-card-header>
+     <ion-card-content>
+         <ion-card-title>
+           {{dashboard.last_event.name}}
+           </ion-card-title>
+           <p ng-bind-html="dashboard.next_event.description"></p>
+       </ion-card-content>
+  </ion-card>
+   <ion-list>
+       <ion-item *ngFor="let person of meetup">
+         <ion-avatar item-left>
+           <img src="{{person.picture.thumbnail}}">
+         </ion-avatar>
+         <h2>{{person.name.first}} {{person.name.last}}</h2>
+         <p>{{person.email}}</p>
+       </ion-item>
+   </ion-list>
+</ion-content>

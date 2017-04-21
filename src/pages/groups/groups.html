@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Meetup Groups
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<div padding>
+	  <ion-segment [(ngModel)]="group">
+	    <ion-segment-button value="meetups">
+	      Meetups
+	    </ion-segment-button>
+	    <ion-segment-button value="events">
+	      Events
+	    </ion-segment-button>
+	  </ion-segment>
+	</div>
+
+	<div [ngSwitch]="group">
+	  <ion-list *ngSwitchCase="'meetups'">
+	    <ion-item>
+	      <ion-thumbnail item-left>
+	        <img src="assets/img/background.png">
+	      </ion-thumbnail>
+	      <h2>Ruby</h2>
+	    </ion-item>
+	    ...
+	  </ion-list>
+
+	  <ion-list *ngSwitchCase="'events'">
+	    <ion-item>
+	      <ion-thumbnail item-left>
+	        <img src="assets/img/background.png">
+	      </ion-thumbnail>
+	      <h2>Luna</h2>
+	    </ion-item>
+	    ...
+	  </ion-list>
+	</div>
+</ion-content>

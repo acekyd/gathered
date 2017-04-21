@@ -1,0 +1,34 @@
+page-login {
+	$title-font: normal 24px/1.5 'Open Sans', sans-serif;
+	$cool-red: #F44336;
+	$box-shadow-bottom-only: 0 2px 1px 0 rgba(0, 0, 0, 0.2);
+
+	.content {
+		background-image: url('../assets/img/background.png');
+        -webkit-background-image: url('../assets/img/background.png');
+        background-repeat: no-repeat;
+     	background-size: cover;
+
+     	text-align: center;
+     	color: #f3f3f3;
+     	font-weight: bolder;
+     	position: relative;
+	}
+
+	.signin {
+		width: 70%;
+		position: absolute;
+	  	top: 50%;
+	  	left: 50%;
+	  	transform: translate(-50%, -50%);
+	}
+
+	h2.title {
+		color: #fff;
+		font-size: 3em;
+		font-weight: bold;
+		font-family: Helvetica;
+		text-shadow: 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+	}
+
+}
