@@ -8,10 +8,13 @@
 
 <ion-content>
   <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-left></ion-icon>
-      @ionicframework
+    <ion-item *ngFor="let connect of connects | async" (click)="showOptions(connect.$key, connect.name)">
+      <ion-avatar item-left>
+        <img src="img/avatar-finn.png">
+      </ion-avatar>
+      <h2>{{connect.name}}</h2>
+      <h3>{{connect.bio}}</h3>
+      <p>Met at Demistifying Laravel</p>
     </ion-item>
   </ion-list>
 </ion-content>
