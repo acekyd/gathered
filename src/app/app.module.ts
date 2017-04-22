@@ -6,12 +6,26 @@ import { MyApp } from './app.component';
 
 import { GroupsPage } from '../pages/groups/groups';
 import { ContactPage } from '../pages/contact/contact';
+import { MorePage } from '../pages/more/more';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { Login } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+// Import the AF2 Module
+import { AngularFireModule } from 'angularfire2';
+ 
+// AF2 Settings
+export const firebaseConfig = {
+  apiKey: "AIzaSyA8U9aAJXFPvhwY2bDxuo1e3CtClU0s6DA",
+  authDomain: "gathered-f3c2a.firebaseapp.com",
+  databaseURL: "https://gathered-f3c2a.firebaseio.com",
+  projectId: "gathered-f3c2a",
+  storageBucket: "gathered-f3c2a.appspot.com",
+  messagingSenderId: "934798349553"
+};
 
 @NgModule({
   declarations: [
@@ -20,12 +34,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     GroupsPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    MorePage
   ],
   imports: [
     HttpModule,
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,7 +50,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     GroupsPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    MorePage
   ],
   providers: [
     StatusBar,
