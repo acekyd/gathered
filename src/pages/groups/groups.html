@@ -5,7 +5,7 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
-
+{{groups}}
 <ion-content padding>
 	<div padding>
 	  <ion-segment [(ngModel)]="group">
@@ -20,23 +20,69 @@
 
 	<div [ngSwitch]="group">
 	  <ion-list *ngSwitchCase="'meetups'">
-	    <ion-item>
-	      <ion-thumbnail item-left>
-	        <img src="assets/img/background.png">
-	      </ion-thumbnail>
-	      <h2>Ruby</h2>
-	    </ion-item>
-	    ...
+	    <ion-card *ngFor="let meetup of groups">
+		  <ion-card-content>
+		    <ion-card-title>
+		      {{meetup.name}}
+		      </ion-card-title>
+		    <p>
+		      {{meetup.plain_text_description}}
+		    </p>
+		  </ion-card-content>
+		  <ion-row no-padding>
+		      <ion-col>
+		        <button ion-button clear small color="danger" icon-left>
+		          <ion-icon name='star'></ion-icon>
+		          Favorite
+		        </button>
+		      </ion-col>
+		      <ion-col text-center>
+		        <button ion-button clear small color="danger" icon-left>
+		          <ion-icon name='musical-notes'></ion-icon>
+		          Listen
+		        </button>
+		      </ion-col>
+		      <ion-col text-right>
+		        <button ion-button clear small color="danger" icon-left>
+		          <ion-icon name='share-alt'></ion-icon>
+		          Share
+		        </button>
+		      </ion-col>
+		    </ion-row>
+		</ion-card>
 	  </ion-list>
 
 	  <ion-list *ngSwitchCase="'events'">
-	    <ion-item>
-	      <ion-thumbnail item-left>
-	        <img src="assets/img/background.png">
-	      </ion-thumbnail>
-	      <h2>Luna</h2>
-	    </ion-item>
-	    ...
+	    <ion-card *ngFor="let event of events.reverse()">
+    		  <ion-card-content>
+    		    <ion-card-title>
+    		      {{event.name}}
+    		      </ion-card-title>
+    		    <p>
+    		      {{event.plain_text_description}}
+    		    </p>
+    		  </ion-card-content>
+    		  <ion-row no-padding>
+    		      <ion-col>
+    		        <button ion-button clear small color="danger" icon-left>
+    		          <ion-icon name='star'></ion-icon>
+    		          Favorite
+    		        </button>
+    		      </ion-col>
+    		      <ion-col text-center>
+    		        <button ion-button clear small color="danger" icon-left>
+    		          <ion-icon name='musical-notes'></ion-icon>
+    		          Listen
+    		        </button>
+    		      </ion-col>
+    		      <ion-col text-right>
+    		        <button ion-button clear small color="danger" icon-left>
+    		          <ion-icon name='share-alt'></ion-icon>
+    		          Share
+    		        </button>
+    		      </ion-col>
+    		    </ion-row>
+    		</ion-card>
 	  </ion-list>
 	</div>
 </ion-content>

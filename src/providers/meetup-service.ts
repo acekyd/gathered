@@ -29,7 +29,7 @@ export class MeetupService {
 
       // don't have the data yet
       return new Promise(resolve => {
-        this.http.get('https://api.meetup.com/dashboard?access_token='+this.access_token)
+        this.http.get('https://api.meetup.com/dashboard?is_simplehtml=true&fields=simple_html_description&access_token='+this.access_token)
           .map(res => res.json())
           .subscribe(data => {
             this.dashboard = data;
@@ -48,7 +48,7 @@ export class MeetupService {
 
       // don't have the data yet
       return new Promise(resolve => {
-        this.http.get('https://api.meetup.com/self/groups?access_token='+this.access_token)
+        this.http.get('https://api.meetup.com/self/groups?fields=plain_text_description&access_token='+this.access_token)
           .map(res => res.json())
           .subscribe(data => {
             this.groups = data;
@@ -67,7 +67,7 @@ export class MeetupService {
 
       // don't have the data yet
       return new Promise(resolve => {
-        this.http.get('https://api.meetup.com/self/events?access_token='+this.access_token)
+        this.http.get('https://api.meetup.com/self/events?desc=false&fields=plain_text_description&access_token='+this.access_token)
           .map(res => res.json())
           .subscribe(data => {
             this.events = data;

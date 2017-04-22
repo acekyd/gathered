@@ -1,40 +1,42 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Gathered</ion-title>
-  </ion-navbar>
+	<ion-navbar>
+		<ion-title>Gathered</ion-title>
+	</ion-navbar>
 </ion-header>
 
 <ion-content padding>
-   <ion-card *ngIf="dashboard">
-    <ion-card-header>
-        Next Event
-      </ion-card-header>
-     <!-- <img src="{{dashboard.next_event.photo_url}}"/> -->
-     <ion-card-content>
-       <ion-card-title>
-         {{dashboard.next_event.name}}
-         </ion-card-title>
-         <p ng-bind-html="dashboard.next_event.description"></p>
-     </ion-card-content>
-   </ion-card>
-   <ion-card *ngIf="dashboard">
-    <ion-card-header>
-        Last Event
-      </ion-card-header>
-     <ion-card-content>
-         <ion-card-title>
-           {{dashboard.last_event.name}}
-           </ion-card-title>
-           <p ng-bind-html="dashboard.next_event.description"></p>
-       </ion-card-content>
-  </ion-card>
-   <ion-list>
-       <ion-item *ngFor="let person of meetup">
-         <ion-avatar item-left>
-           <img src="{{person.picture.thumbnail}}">
-         </ion-avatar>
-         <h2>{{person.name.first}} {{person.name.last}}</h2>
-         <p>{{person.email}}</p>
-       </ion-item>
-   </ion-list>
+	<div *ngIf="dashboard">
+		<ion-card *ngIf="dashboard.next_event">
+			<ion-card-content>
+				<ion-card-header>NEXT EVENT: {{dashboard.next_event.group.name}}</ion-card-header>
+				<ion-card-title>{{dashboard.next_event.name}}</ion-card-title>
+				<p><small><ion-icon name='pin' item-left></ion-icon> {{dashboard.next_event.venue.name}} - {{dashboard.next_event.venue.address_1}}, {{dashboard.next_event.venue.localized_country_name}}. </small></p>
+				<hr>
+				<p>
+					{{dashboard.next_event.simple_html_description}}
+				</p>
+			</ion-card-content>
+			<ion-item>
+				<ion-icon name='clock' item-left></ion-icon>
+				Time
+				<ion-badge item-right>{{dashboard.next_event.time  | date: 'EEE, MMM d. HH:mma'}}</ion-badge>
+			</ion-item>
+		</ion-card>
+		<ion-card *ngIf="dashboard.last_event">
+			<ion-card-content>
+				<ion-card-header>LAST EVENT: {{dashboard.last_event.group.name}}</ion-card-header>
+				<ion-card-title>{{dashboard.last_event.name}}</ion-card-title>
+				<p><small><ion-icon name='pin' item-left></ion-icon> {{dashboard.last_event.venue.name}} - {{dashboard.last_event.venue.address_1}}, {{dashboard.last_event.venue.localized_country_name}}. </small></p>
+				<hr>
+				<p>
+					{{dashboard.last_event.simple_html_description}}
+				</p>
+			</ion-card-content>
+			<ion-item>
+				<ion-icon name='clock' item-left></ion-icon>
+				Time
+				<ion-badge item-right>{{dashboard.last_event.time | date: 'EEE, MMM d. HH:mma'}}</ion-badge>
+			</ion-item>
+		</ion-card>
+	</div>
 </ion-content>
