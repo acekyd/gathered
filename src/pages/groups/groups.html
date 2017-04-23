@@ -1,88 +1,73 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Meetup Groups
-    </ion-title>
+	<ion-title>
+	  Meetup Groups
+	</ion-title>
   </ion-navbar>
 </ion-header>
 {{groups}}
 <ion-content padding>
 	<div padding>
 	  <ion-segment [(ngModel)]="group">
-	    <ion-segment-button value="meetups">
-	      Meetups
-	    </ion-segment-button>
-	    <ion-segment-button value="events">
-	      Events
-	    </ion-segment-button>
+		<ion-segment-button value="meetups" color="danger">
+		  Meetups
+		</ion-segment-button>
+		<ion-segment-button value="events" color="danger">
+		  Events
+		</ion-segment-button>
 	  </ion-segment>
 	</div>
 
 	<div [ngSwitch]="group">
 	  <ion-list *ngSwitchCase="'meetups'">
-	    <ion-card *ngFor="let meetup of groups">
+		<ion-card *ngFor="let meetup of groups">
 		  <ion-card-content>
-		    <ion-card-title>
-		      {{meetup.name}}
-		      </ion-card-title>
-		    <p>
-		      {{meetup.plain_text_description}}
-		    </p>
+			<ion-card-title>
+			  {{meetup.name}}
+			  </ion-card-title>
+			<p>
+			  {{meetup.plain_text_description}}
+			</p>
 		  </ion-card-content>
 		  <ion-row no-padding>
-		      <ion-col>
-		        <button ion-button clear small color="danger" icon-left>
-		          <ion-icon name='star'></ion-icon>
-		          Favorite
-		        </button>
-		      </ion-col>
-		      <ion-col text-center>
-		        <button ion-button clear small color="danger" icon-left>
-		          <ion-icon name='musical-notes'></ion-icon>
-		          Listen
-		        </button>
-		      </ion-col>
-		      <ion-col text-right>
-		        <button ion-button clear small color="danger" icon-left>
-		          <ion-icon name='share-alt'></ion-icon>
-		          Share
-		        </button>
-		      </ion-col>
-		    </ion-row>
+			  <ion-col>
+				<button ion-button clear small color="danger" icon-left>
+				  <ion-icon name='pin'></ion-icon>
+				  {{meetup.city}}, {{meetup.country}}
+				</button>
+			  </ion-col>
+			  <ion-col text-center>
+				<button ion-button clear small color="danger" icon-left>
+				  <ion-icon name='people'></ion-icon>
+				  {{meetup.members}}
+				</button>
+			  </ion-col>
+			  <ion-col text-right>
+				<button ion-button clear small color="danger" icon-left>
+				  <ion-icon name='share-alt'></ion-icon>
+				  Share
+				</button>
+			  </ion-col>
+			</ion-row>
 		</ion-card>
 	  </ion-list>
 
-	  <ion-list *ngSwitchCase="'events'">
-	    <ion-card *ngFor="let event of events.reverse()">
-    		  <ion-card-content>
-    		    <ion-card-title>
-    		      {{event.name}}
-    		      </ion-card-title>
-    		    <p>
-    		      {{event.plain_text_description}}
-    		    </p>
-    		  </ion-card-content>
-    		  <ion-row no-padding>
-    		      <ion-col>
-    		        <button ion-button clear small color="danger" icon-left>
-    		          <ion-icon name='star'></ion-icon>
-    		          Favorite
-    		        </button>
-    		      </ion-col>
-    		      <ion-col text-center>
-    		        <button ion-button clear small color="danger" icon-left>
-    		          <ion-icon name='musical-notes'></ion-icon>
-    		          Listen
-    		        </button>
-    		      </ion-col>
-    		      <ion-col text-right>
-    		        <button ion-button clear small color="danger" icon-left>
-    		          <ion-icon name='share-alt'></ion-icon>
-    		          Share
-    		        </button>
-    		      </ion-col>
-    		    </ion-row>
-    		</ion-card>
+	 	<ion-list *ngSwitchCase="'events'">
+			<ion-card *ngFor="let event of events.reverse()">
+				<ion-card-content>
+					<ion-card-title>{{event.name}}</ion-card-title>
+					<p *ngIf="event.venue" color="danger"><small><ion-icon name='pin' item-left></ion-icon> {{event.venue.name}} - {{event.venue.address_1}}, {{event.venue.localized_country_name}}. </small></p>
+					<hr>
+					<p>
+						{{event.plain_text_description}}
+					</p>
+				</ion-card-content>
+				<ion-item>
+					<ion-icon name='clock' item-left color="danger"></ion-icon>
+					Time
+					<ion-badge item-right color="danger">{{event.time  | date: 'EEE, MMM d. HH:mma'}}</ion-badge>
+				</ion-item>
+			</ion-card>
 	  </ion-list>
 	</div>
 </ion-content>
