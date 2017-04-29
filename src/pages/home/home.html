@@ -10,32 +10,32 @@
 			<ion-card-content>
 				<ion-card-header>NEXT EVENT: {{dashboard.next_event.group.name}}</ion-card-header>
 				<ion-card-title>{{dashboard.next_event.name}}</ion-card-title>
-				<p><small><ion-icon name='pin' item-left></ion-icon> {{dashboard.next_event.venue.name}} - {{dashboard.next_event.venue.address_1}}, {{dashboard.next_event.venue.localized_country_name}}. </small></p>
+				<p *ngIf="dashboard.next_event.venue"><small><ion-icon name='pin' item-left color="danger"></ion-icon> {{dashboard.next_event.venue.name}} - {{dashboard.next_event.venue.address_1}}, {{dashboard.next_event.venue.localized_country_name}}. </small></p>
 				<hr>
 				<p>
 					{{dashboard.next_event.simple_html_description}}
 				</p>
 			</ion-card-content>
 			<ion-item>
-				<ion-icon name='clock' item-left></ion-icon>
+				<ion-icon name='clock' item-left color="danger"></ion-icon>
 				Time
-				<ion-badge item-right>{{dashboard.next_event.time  | date: 'EEE, MMM d. HH:mma'}}</ion-badge>
+				<ion-badge item-right color="danger">{{dashboard.next_event.time  | date: 'EEE, MMM d. HH:mma'}}</ion-badge>
 			</ion-item>
 		</ion-card>
 		<ion-card *ngIf="dashboard.last_event">
 			<ion-card-content>
 				<ion-card-header>LAST EVENT: {{dashboard.last_event.group.name}}</ion-card-header>
 				<ion-card-title>{{dashboard.last_event.name}}</ion-card-title>
-				<p><small><ion-icon name='pin' item-left></ion-icon> {{dashboard.last_event.venue.name}} - {{dashboard.last_event.venue.address_1}}, {{dashboard.last_event.venue.localized_country_name}}. </small></p>
+				<p><small><ion-icon name='pin' item-left color="danger"></ion-icon> {{dashboard.last_event.venue.name}} - {{dashboard.last_event.venue.address_1}}, {{dashboard.last_event.venue.localized_country_name}}. </small></p>
 				<hr>
 				<p>
 					{{dashboard.last_event.simple_html_description}}
 				</p>
 			</ion-card-content>
 			<ion-item>
-				<ion-icon name='clock' item-left></ion-icon>
+				<ion-icon name='clock' item-left color="danger"></ion-icon>
 				Time
-				<ion-badge item-right>{{dashboard.last_event.time | date: 'EEE, MMM d. HH:mma'}}</ion-badge>
+				<ion-badge item-right color="danger">{{dashboard.last_event.time | date: 'EEE, MMM d. HH:mma'}}</ion-badge>
 			</ion-item>
 		</ion-card>
 	</div>
