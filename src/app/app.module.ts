@@ -10,6 +10,7 @@ import { MorePage } from '../pages/more/more';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { Login } from '../pages/login/login';
+import { EventPage } from '../pages/event/event';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -35,7 +36,8 @@ export const firebaseConfig = {
     ContactPage,
     HomePage,
     TabsPage,
-    MorePage
+    MorePage,
+    EventPage
   ],
   imports: [
     HttpModule,
@@ -51,7 +53,8 @@ export const firebaseConfig = {
     ContactPage,
     HomePage,
     TabsPage,
-    MorePage
+    MorePage,
+    EventPage
   ],
   providers: [
     StatusBar,

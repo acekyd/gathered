@@ -1,0 +1,38 @@
+<!--
+  Generated template for the EventPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title *ngIf="event">Check-ins</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card class="card-background-page" *ngIf="event">
+    <div class="card-title">{{event.name}}</div>
+    <div class="card-subtitle">{{event.group.name}}</div>
+    <button ion-button color="light" outline (click)="checkIn(event.id)">Check In</button>
+  </ion-card>
+
+	<ion-card>
+	  <ion-card-header>
+	    Checked-In Members
+	  </ion-card-header>
+	  <ion-list *ngIf="check_ins">
+		  <ion-item *ngFor="let checkin of check_ins | async">
+		    <ion-avatar item-left>
+		      <img src="{{checkin.user.photo.thumb_link}}">
+		    </ion-avatar>
+		    <h2>{{checkin.user.name}}</h2>
+		    <p *ngIf="checkin.user.bio">{{checkin.user.bio}}</p>
+		  </ion-item>
+		</ion-list>
+	</ion-card>
+
+</ion-content>

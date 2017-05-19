@@ -15,6 +15,8 @@ export class MeetupService {
   public dashboard;
   public groups;
   public events;
+  public event;
+  public auth_user;
   public access_token = localStorage.getItem("access_token");
 
   constructor(public http: Http) {
@@ -77,22 +79,35 @@ export class MeetupService {
       });
   }
 
-  load() {
-    if (this.data) {
+  loadEvent(urlname, id) {
+    console.log('Hello Meetup Event');
+
+      // don't have the data yet
+      return new Promise(resolve => {
+        this.http.get('https://api.meetup.com/'+urlname+'/events/'+id+'?access_token='+this.access_token)
+          .map(res => res.json())
+          .subscribe(data => {
+            this.event = data;
+            console.log(this.event);
+            resolve(this.event);
+          });
+      });
+  }
+
+  loadUser() {
+    if (this.auth_user) {
         // already loaded data
-        return Promise.resolve(this.data);
+        return Promise.resolve(this.auth_user);
       }
 
       // don't have the data yet
       return new Promise(resolve => {
-        // We're using Angular HTTP provider to request the data,
-        // then on the response, it'll map the JSON data to a parsed JS object.
-        // Next, we process the data and resolve the promise with the new data.
-        this.http.get('https://randomuser.me/api/?results=10')
+        this.http.get('https://api.meetup.com/members/self?access_token='+this.access_token)
           .map(res => res.json())
           .subscribe(data => {
-            this.data = data.results;
-            resolve(this.data);
+            this.auth_user = data;
+            console.log(this.auth_user);
+            resolve(this.auth_user);
           });
       });
   }
