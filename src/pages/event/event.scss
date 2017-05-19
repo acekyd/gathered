@@ -4,9 +4,9 @@ page-event {
 	    position: relative;
 	    text-align: center;
 	    vertical-align: middle;
-	    height: 30%;
+	    min-height: 30%;
 	    background: #f53d3d;
-	    padding-top: 10%;
+	    padding: 10%;
 	  }
 
 	  .card-title {
@@ -20,6 +20,7 @@ page-event {
 	    font-size: 1.0em;
 	    width: 100%;
 	    color: #fff;
+	    margin-bottom: 10px;
 	  }
 
 }

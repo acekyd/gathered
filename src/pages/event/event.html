@@ -17,7 +17,7 @@
   <ion-card class="card-background-page" *ngIf="event">
     <div class="card-title">{{event.name}}</div>
     <div class="card-subtitle">{{event.group.name}}</div>
-    <button ion-button color="light" outline (click)="checkIn(event.id)">Check In</button>
+    <button ion-button color="light" *ngIf="!checked_in" outline (click)="checkIn(event.id)">Check In</button>
   </ion-card>
 
 	<ion-card>
@@ -25,11 +25,11 @@
 	    Checked-In Members
 	  </ion-card-header>
 	  <ion-list *ngIf="check_ins">
-		  <ion-item *ngFor="let checkin of check_ins | async">
+		  <ion-item *ngFor="let checkin of check_ins | async" (click)="showOptions(event.id, event.name, checkin)">
 		    <ion-avatar item-left>
 		      <img src="{{checkin.photo.thumb_link}}">
 		    </ion-avatar>
-		    <h2>{{checkin.name}}</h2>
+		    <h2>{{checkin.name}} - <small *ngIf="checkin.id == user.id">You</small></h2>
 		    <p *ngIf="checkin.bio">{{checkin.bio}}</p>
 		  </ion-item>
 		</ion-list>

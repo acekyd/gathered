@@ -12,6 +12,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { Login } from '../pages/login/login';
 import { EventPage } from '../pages/event/event';
+import { AddPage } from '../pages/add/add';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -36,6 +37,7 @@ export const firebaseConfig = {
     GroupsPage,
     ContactPage,
     HomePage,
+    AddPage,
     TabsPage,
     MorePage,
     EventPage
@@ -53,6 +55,7 @@ export const firebaseConfig = {
     GroupsPage,
     ContactPage,
     HomePage,
+    AddPage,
     TabsPage,
     MorePage,
     EventPage

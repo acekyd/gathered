@@ -9,46 +9,12 @@ import {AngularFire, FirebaseListObservable} from 'angularfire2';
 export class ContactPage {
 
   connects: FirebaseListObservable<any>;
+  public user: any;
 
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, af: AngularFire, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController) {
-	 this.connects = af.database.list('/connects');
-	 this.addConnect();
+	 this.user = JSON.parse(localStorage.getItem("user"));
+	 this.connects = af.database.list('/connects/'+this.user.id);
   }
-
-  	addConnect(){
-		let prompt = this.alertCtrl.create({
-		  title: 'Connect Name',
-		  message: "Enter a name for this new connect you're so keen on adding",
-		  inputs: [
-			 {
-				name: 'name',
-				placeholder: 'Connect\'s name'
-			 },
-			 {
-				name: 'bio',
-				placeholder: 'What does your connect do?'
-			 }
-		  ],
-		  buttons: [
-			 {
-				text: 'Cancel',
-				handler: data => {
-				  console.log('Cancel clicked');
-				}
-			 },
-			 {
-				text: 'Save',
-				handler: data => {
-				  this.connects.push({
-					 name: data.name,
-					 bio:  data.bio
-				  });
-				}
-			 }
-		  ]
-		});
-		prompt.present();
-	 }
 
 	 showOptions(connectId, connectName) {
 		let actionSheet = this.actionSheetCtrl.create({

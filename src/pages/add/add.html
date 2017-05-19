@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Gathered
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+
+      <ion-item>
+        <ion-label fixed>Name</ion-label>
+        <ion-input type="text" name="name" [value]="contact.name" (input)="contact.name = $event.target.value"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>City</ion-label>
+        <ion-input type="text" name="city" [value]="contact.city" (input)="contact.city = $event.target.value"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Bio</ion-label>
+        <ion-textarea elastic [value]="contact.bio" (input)="contact.bio = $event.target.value"></ion-textarea>
+      </ion-item>
+
+      <div padding class="exists">
+        <button ion-button *ngIf="!exists" color="danger" (click)="addConnect()" block>ADD CONTACT</button>
+        <span *ngIf="exists">CONTACT EXISTS</span>
+      </div>
+
+    </ion-list>
+</ion-content>
