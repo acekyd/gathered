@@ -27,10 +27,10 @@
 	  <ion-list *ngIf="check_ins">
 		  <ion-item *ngFor="let checkin of check_ins | async">
 		    <ion-avatar item-left>
-		      <img src="{{checkin.user.photo.thumb_link}}">
+		      <img src="{{checkin.photo.thumb_link}}">
 		    </ion-avatar>
-		    <h2>{{checkin.user.name}}</h2>
-		    <p *ngIf="checkin.user.bio">{{checkin.user.bio}}</p>
+		    <h2>{{checkin.name}}</h2>
+		    <p *ngIf="checkin.bio">{{checkin.bio}}</p>
 		  </ion-item>
 		</ion-list>
 	</ion-card>

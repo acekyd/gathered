@@ -48,9 +48,7 @@ export class EventPage {
 
   checkIn(event_id)
   {
-      this.check_ins.push({
-              user: this.user
-        });
+      this.check_ins.push(this.user);
   }
 
 }
