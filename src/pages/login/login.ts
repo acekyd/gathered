@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 declare var window: any;
 /**
@@ -18,7 +19,7 @@ export class Login {
 
 	public access_token = "";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private platform: Platform) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private platform: Platform, public iab: InAppBrowser) {
   	if(localStorage.getItem('access_token'))
   		{
   			this.access_token = localStorage.getItem('access_token');
@@ -40,7 +41,7 @@ export class Login {
 
     public meetupLogin(): Promise<any> {
     	return new Promise(function(resolve, reject) {
-	        var browserRef = window.open("https://secure.meetup.com/oauth2/authorize?client_id=3rs9so9865jed3hha17m3bepga&response_type=token&redirect_uri=http://localhost/callback&scope=ageless&set_mobile=on", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
+	        var browserRef = this.iab.create("https://secure.meetup.com/oauth2/authorize?client_id=3rs9so9865jed3hha17m3bepga&response_type=token&redirect_uri=http://localhost/callback&scope=ageless&set_mobile=on", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
 	        browserRef.addEventListener("loadstart", (event) => {
 	            if ((event.url).indexOf("http://localhost/callback") === 0) {
 	                browserRef.removeEventListener("exit", (event) => {});

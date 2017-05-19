@@ -3,6 +3,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { GroupsPage } from '../pages/groups/groups';
 import { ContactPage } from '../pages/contact/contact';
@@ -59,6 +60,7 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
