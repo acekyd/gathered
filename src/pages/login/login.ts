@@ -41,25 +41,28 @@ export class Login {
 
     public meetupLogin(): Promise<any> {
     		var browserRef = this.iab.create("https://secure.meetup.com/oauth2/authorize?client_id=3rs9so9865jed3hha17m3bepga&response_type=token&redirect_uri=http://localhost/callback&scope=ageless&set_mobile=on", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
-    	   	return new Promise(function(resolve, reject){
-    	        browserRef.on("loadstart")
-    	        .subscribe((event: InAppBrowserEvent) => {
-    	            if ((event.url).indexOf("http://localhost/callback") === 0) { 
-    	                browserRef.close();
-    	                var responseParameters = ((event.url).split("#")[1]).split("&");
-    	                var parsedResponse = {};
-    	                for (var i = 0; i < responseParameters.length; i++) {
-    	                    parsedResponse[responseParameters[i].split("=")[0]] = responseParameters[i].split("=")[1];
-    	                }
-    	                if (parsedResponse["access_token"] !== undefined && parsedResponse["access_token"] !== null) {
-    	                    resolve(parsedResponse);
-    	                } else {
-    	                    reject("Problem authenticating with Meetup");
-    	                }
-    	            }
+    	   	 return new Promise(function (resolve, reject) {
+            browserRef.on("loadstart")
+                .subscribe((event: InAppBrowserEvent) => {
+                    if ((event.url).indexOf("http://localhost/callback") === 0) {
+                        browserRef.close();
+                        var responseParameters = ((event.url).split("#")[1]).split("&");
+                        var parsedResponse = {};
+                        for (var i = 0; i < responseParameters.length; i++) {
+                            parsedResponse[responseParameters[i].split("=")[0]] = responseParameters[i].split("=")[1];
+                        }
+                        if (parsedResponse["access_token"] !== undefined && parsedResponse["access_token"] !== null) {
+                            resolve(parsedResponse);
+                        } else {
+                            reject("Problem authenticating with Meetup");
+                        }
+                    }else
+                      reject("Problem authenticating with Meetup 2 url thinggy");
 
-    	        });
-    	     });
+                }, err => {
+                    console.error(err);
+                });
+        });
     }
 
 
