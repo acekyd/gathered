@@ -41,7 +41,7 @@ export class Login {
 
     public meetupLogin(): Promise<any> {
     	return new Promise(function(resolve, reject) {
-	        var browserRef = this.iab.create("https://secure.meetup.com/oauth2/authorize?client_id=3rs9so9865jed3hha17m3bepga&response_type=token&redirect_uri=http://localhost/callback&scope=ageless&set_mobile=on", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
+	        var browserRef = cordova.InAppBrowser.open("https://secure.meetup.com/oauth2/authorize?client_id=3rs9so9865jed3hha17m3bepga&response_type=token&redirect_uri=http://localhost/callback&scope=ageless&set_mobile=on", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
 	        browserRef.addEventListener("loadstart", (event) => {
 	            if ((event.url).indexOf("http://localhost/callback") === 0) {
 	                browserRef.removeEventListener("exit", (event) => {});
