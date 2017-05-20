@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Platform } from 'ionic-angular';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @Component({
   selector: 'page-more',
@@ -9,13 +10,13 @@ export class MorePage {
 
   public access_token = "";
 
- constructor(public navCtrl: NavController,  public navParams: NavParams, public platform: Platform ) {
+ constructor(public navCtrl: NavController,  public navParams: NavParams, public platform: Platform, public iab: InAppBrowser ) {
   		this.access_token = localStorage.getItem("access_token");
   }
 
   launch(url) {
         this.platform.ready().then(() => {
-            cordova.InAppBrowser.open(url, "_system", "location=true");
+            this.iab.create(url, "_system", "location=true");
         });
     }
 
