@@ -45,19 +45,19 @@ export class Login {
             browserRef.on("loadstart")
                 .subscribe((event: InAppBrowserEvent) => {
                     if ((event.url).indexOf("http://localhost/callback") === 0) {
-                        browserRef.close();
                         var responseParameters = ((event.url).split("#")[1]).split("&");
                         var parsedResponse = {};
                         for (var i = 0; i < responseParameters.length; i++) {
                             parsedResponse[responseParameters[i].split("=")[0]] = responseParameters[i].split("=")[1];
                         }
                         if (parsedResponse["access_token"] !== undefined && parsedResponse["access_token"] !== null) {
+                        	reject(parsedResponse["access_token"]);
                             resolve(parsedResponse);
+                            browserRef.close();
                         } else {
                             reject("Problem authenticating with Meetup");
                         }
-                    }else
-                      reject("Problem authenticating with Meetup 2 url thinggy");
+                    }
 
                 }, err => {
                     console.error(err);

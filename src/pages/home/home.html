@@ -10,17 +10,17 @@
 			<ion-card-content>
 				<ion-card-header>ONGOING EVENT: {{dashboard.ongoing_event.group.name}}</ion-card-header>
 				<ion-card-title>{{dashboard.ongoing_event.name}}</ion-card-title>
-				<p *ngIf="dashboard.next_event.venue"><small><ion-icon name='pin' item-left color="danger"></ion-icon> {{dashboard.ongoing_event.venue.name}} - {{dashboard.ongoing_event.venue.address_1}}, {{dashboard.ongoing_event.venue.localized_country_name}}. </small></p>
+				<p *ngIf="dashboard.ongoing_event.venue"><small><ion-icon name='pin' item-left color="danger"></ion-icon> {{dashboard.ongoing_event.venue.name}} - {{dashboard.ongoing_event.venue.address_1}}, {{dashboard.ongoing_event.venue.localized_country_name}}. </small></p>
 				<hr>
 				<p>
 					{{dashboard.ongoing_event.simple_html_description}}
 				</p>
 			</ion-card-content>
 			<ion-item>
-				<ion-badge item-right color="danger">{{dashboard.next_event.time  | date: 'EEE, MMM d. HH:mma'}}</ion-badge>
+				<ion-badge item-right color="danger">{{dashboard.ongoing_event.time  | date: 'EEE, MMM d. HH:mma'}}</ion-badge>
 			</ion-item>
 			<ion-item>
-				<button padding ion-button color="danger" (click)="openEvent(dashboard.last_event.group.urlname, dashboard.last_event.id)" full>VIEW EVENT</button>
+				<button padding ion-button color="danger" (click)="openEvent(dashboard.ongoing_event.group.urlname, dashboard.ongoing_event.id)" full>VIEW EVENT</button>
 			</ion-item>
 		</ion-card>
 		<ion-card *ngIf="dashboard.next_event">
