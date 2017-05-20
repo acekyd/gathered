@@ -17,8 +17,6 @@
 				</p>
 			</ion-card-content>
 			<ion-item>
-				<ion-icon name='clock' item-left color="danger"></ion-icon>
-				Time
 				<ion-badge item-right color="danger">{{dashboard.next_event.time  | date: 'EEE, MMM d. HH:mma'}}</ion-badge>
 			</ion-item>
 		</ion-card>
@@ -33,14 +31,12 @@
 				</p>
 			</ion-card-content>
 			<ion-item>
-				<ion-icon name='clock' item-left color="danger"></ion-icon>
-				Time
 				<ion-badge item-right color="danger">{{dashboard.next_event.time  | date: 'EEE, MMM d. HH:mma'}}</ion-badge>
 			</ion-item>
 		</ion-card>
 		<ion-card *ngIf="dashboard.last_event">
 			<ion-card-content>
-				<ion-card-header>LAST EVENT: {{dashboard.last_event.group.name}} <button (click)="openEvent(dashboard.last_event.group.urlname, dashboard.last_event.id)">Open</button></ion-card-header>
+				<ion-card-header>LAST EVENT: {{dashboard.last_event.group.name}}</ion-card-header>
 				<ion-card-title>{{dashboard.last_event.name}}</ion-card-title>
 				<p><small><ion-icon name='pin' item-left color="danger"></ion-icon> {{dashboard.last_event.venue.name}} - {{dashboard.last_event.venue.address_1}}, {{dashboard.last_event.venue.localized_country_name}}. </small></p>
 				<hr>
@@ -49,9 +45,10 @@
 				</p>
 			</ion-card-content>
 			<ion-item>
-				<ion-icon name='clock' item-left color="danger"></ion-icon>
-				Time
 				<ion-badge item-right color="danger">{{dashboard.last_event.time | date: 'EEE, MMM d. HH:mma'}}</ion-badge>
+			</ion-item>
+			<ion-item>
+				<button padding ion-button color="danger" (click)="openEvent(dashboard.last_event.group.urlname, dashboard.last_event.id)" full>VIEW EVENT</button>
 			</ion-item>
 		</ion-card>
 	</div>

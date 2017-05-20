@@ -26,12 +26,8 @@ export class ContactPage {
 				handler: () => {
 				  this.removeConnect(connectId);
 				}
-			 },{
-				text: 'Update Connect',
-				handler: () => {
-				  this.updateConnect(connectId, connectName);
-				}
-			 },{
+			 },
+			 {
 				text: 'Cancel',
 				role: 'cancel',
 				handler: () => {
@@ -52,36 +48,5 @@ export class ContactPage {
 					 toast.present();
 				}
 		  );
-	 }
-
-	 updateConnect(connectId, connectName){
-		let prompt = this.alertCtrl.create({
-		  title: 'Connect Name',
-		  message: "Update the name for this connect",
-		  inputs: [
-			 {
-				name: 'name',
-				placeholder: 'Connect Name',
-				value: connectName
-			 },
-		  ],
-		  buttons: [
-			 {
-				text: 'Cancel',
-				handler: data => {
-				  console.log('Cancel clicked');
-				}
-			 },
-			 {
-				text: 'Save',
-				handler: data => {
-				  this.connects.update(connectId, {
-					 name: data.name
-				  });
-				}
-			 }
-		  ]
-		});
-		prompt.present();
 	 }
 }

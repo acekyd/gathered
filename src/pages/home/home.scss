@@ -1,3 +1,7 @@
 page-home {
-
+	.card-header-md {
+    	padding: 0;
+    	font-size: 1em;
+    	color: map-get($colors, danger);
+    }
 }

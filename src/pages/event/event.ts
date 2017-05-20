@@ -81,13 +81,13 @@ export class EventPage {
     actionSheet.present();
    }
 
-   public addContactForm(eventId, eventName, contact)
-   {
-     this.navCtrl.push(AddPage, {
-          contact: contact,
-          eventId: eventId,
-          eventName: eventName
-      });
-   }
+ public addContactForm(eventId, eventName, contact)
+ {
+   this.navCtrl.push(AddPage, {
+        contact: contact,
+        eventId: eventId,
+        eventName: eventName
+    });
+ }
 
 }
