@@ -30,8 +30,6 @@ export class Login {
   public login() {
   		this.platform.ready().then(() => {
 	        this.meetupLogin().then(success => {
-	            this.access_token = success.access_token;
-	            localStorage.setItem('access_token', this.access_token);
 	            this.navCtrl.setRoot(TabsPage );
 	        }, (error) => {
 	            alert(error);
@@ -40,7 +38,7 @@ export class Login {
     }
 
     public meetupLogin(): Promise<any> {
-    		var browserRef = this.iab.create("https://secure.meetup.com/oauth2/authorize?client_id=3rs9so9865jed3hha17m3bepga&response_type=token&redirect_uri=http://localhost/callback&scope=ageless&set_mobile=on", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
+    		 var browserRef = this.iab.create("https://secure.meetup.com/oauth2/authorize?client_id=3rs9so9865jed3hha17m3bepga&response_type=token&redirect_uri=http://localhost/callback&scope=ageless&set_mobile=on", "_blank", "location=no,clearsessioncache=yes,clearcache=yes");
     	   	 return new Promise(function (resolve, reject) {
             browserRef.on("loadstart")
                 .subscribe((event: InAppBrowserEvent) => {
@@ -51,14 +49,13 @@ export class Login {
                             parsedResponse[responseParameters[i].split("=")[0]] = responseParameters[i].split("=")[1];
                         }
                         if (parsedResponse["access_token"] !== undefined && parsedResponse["access_token"] !== null) {
-                        	reject(parsedResponse["access_token"]);
-                            resolve(parsedResponse);
+                            localStorage.setItem('access_token', parsedResponse["access_token"]);
                             browserRef.close();
+                            resolve(parsedResponse);
                         } else {
                             reject("Problem authenticating with Meetup");
                         }
                     }
-
                 }, err => {
                     console.error(err);
                 });

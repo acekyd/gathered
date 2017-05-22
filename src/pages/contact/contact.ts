@@ -14,6 +14,7 @@ export class ContactPage {
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, af: AngularFire, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController) {
 	 this.user = JSON.parse(localStorage.getItem("user"));
 	 this.connects = af.database.list('/connects/'+this.user.id);
+	 console.log(this.connects);
   }
 
 	 showOptions(connectId, connectName) {
