@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, Platform, AlertController, ToastController } from 'ionic-angular';
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
+import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
 
 @Component({
   selector: 'page-add',
@@ -17,10 +17,10 @@ export class AddPage {
   public exists = false;
 
 
- constructor(public navCtrl: NavController,  public navParams: NavParams, af: AngularFire, public alertCtrl: AlertController, public toastCtrl: ToastController) {
+ constructor(public navCtrl: NavController,  public navParams: NavParams, af: AngularFireDatabase, public alertCtrl: AlertController, public toastCtrl: ToastController) {
   		this.access_token = localStorage.getItem("access_token");
   		this.user = JSON.parse(localStorage.getItem("user"));
-  		this.connects = af.database.list('/connects/'+this.user.id);
+  		this.connects = af.list('/connects/'+this.user.id);
   		this.contact = navParams.get('contact');
   		this.eventId = navParams.get('eventId');
   		this.eventName = navParams.get('eventName');
