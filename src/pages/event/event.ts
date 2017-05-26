@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ActionSheetController } from 'ionic-angular';
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
+import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
 
 import { AddPage } from '../add/add';
 import { MeetupService } from '../../providers/meetup-service';
@@ -23,7 +23,7 @@ export class EventPage {
 
   check_ins: FirebaseListObservable<any>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public meetupService: MeetupService, af: AngularFire, public actionSheetCtrl: ActionSheetController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public meetupService: MeetupService, af: AngularFireDatabase, public actionSheetCtrl: ActionSheetController) {
   	this.access_token = localStorage.getItem("access_token");
     this.user = JSON.parse(localStorage.getItem("user"));
   	this.urlname = navParams.get('urlname');
@@ -31,7 +31,7 @@ export class EventPage {
   	if(this.access_token)
   	  {
   	    this.loadEvent(this.urlname, this.id);
-        this.check_ins = af.database.list('/check-ins/'+this.id);
+        this.check_ins = af.list('/check-ins/'+this.id);
 
         var self = this;
         self.check_ins.forEach(function(element) {

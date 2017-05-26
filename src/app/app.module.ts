@@ -19,7 +19,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 // Import the AF2 Module
 import { AngularFireModule } from 'angularfire2';
- 
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 // AF2 Settings
 export const firebaseConfig = {
   apiKey: "AIzaSyA8U9aAJXFPvhwY2bDxuo1e3CtClU0s6DA",
@@ -46,7 +47,8 @@ export const firebaseConfig = {
     HttpModule,
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

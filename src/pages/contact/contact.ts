@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, ActionSheetController, ToastController } from 'ionic-angular';
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
+import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
 
 @Component({
   selector: 'page-contact',
@@ -11,9 +11,9 @@ export class ContactPage {
   connects: FirebaseListObservable<any>;
   public user: any;
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, af: AngularFire, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public af: AngularFireDatabase, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController) {
 	 this.user = JSON.parse(localStorage.getItem("user"));
-	 this.connects = af.database.list('/connects/'+this.user.id);
+	 this.connects = af.list('/connects/'+this.user.id);
 	 console.log(this.connects);
   }
 

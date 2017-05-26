@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { NavController, NavParams, Platform } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { InAppBrowser, InAppBrowserEvent } from '@ionic-native/in-app-browser';
 
@@ -10,7 +10,6 @@ declare var window: any;
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
