@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, ActionSheetController, ToastController } from 'ionic-angular';
 import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @Component({
   selector: 'page-contact',
@@ -12,7 +13,7 @@ export class ContactPage {
   public connectsList: Array<any>;
   public user: any;
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public af: AngularFireDatabase, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public af: AngularFireDatabase, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, private socialSharing: SocialSharing) {
 	 this.user = JSON.parse(localStorage.getItem("user"));
 	 this.connects = af.list('/connects/'+this.user.id);
 	 console.log(this.connects);
@@ -59,15 +60,27 @@ export class ContactPage {
 
   }
 
-	 showOptions(connectId, connectName) {
+	 showOptions(connect) {
 		let actionSheet = this.actionSheetCtrl.create({
 		  title: 'What do you want to do?',
 		  buttons: [
+		  	 {
+		  	 	text: 'Share Connect',
+		  	 	handler: () => {
+		  	 		// share(message, subject, file, url)
+		  	 		var message = "Checkout "+connect.name+", "+connect.bio+". ";
+		  	 		if(connect.phone != null) message += "Phone: "+connect.phone+". ";
+		  	 		if(connect.email != null) message += "Email: "+connect.email+". ";
+		  	 		if(connect.twitter != null) message += "Twitter: "+connect.twitter+". ";
+		  	 		if(connect.facebook != null) message += "Facebook - "+connect.facebook+". ";
+    				this.socialSharing.share(message, "Share Connect", null, null);
+		  	 	}
+		  	 },
 			 {
 				text: 'Delete Connect',
 				role: 'destructive',
 				handler: () => {
-				  this.removeConnect(connectId);
+				  this.removeConnect(connect.$key);
 				}
 			 },
 			 {
