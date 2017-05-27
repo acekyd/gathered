@@ -24,6 +24,27 @@
         <ion-textarea elastic [value]="contact.bio" (input)="contact.bio = $event.target.value"></ion-textarea>
       </ion-item>
 
+      <ion-item>
+        <ion-label fixed>Phone</ion-label>
+        <ion-input type="text" name="phone" [value]="contact.phone" (input)="contact.phone = $event.target.value"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Email</ion-label>
+        <ion-input type="email" name="email" [value]="contact.email" (input)="contact.email = $event.target.value"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Twitter @</ion-label>
+        <ion-input type="text" name="twitter" [value]="contact.twitter" (input)="contact.twitter = $event.target.value"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Facebook Url</ion-label>
+        <ion-input type="url" name="facebook" [value]="contact.facebook" (input)="contact.facebook = $event.target.value"></ion-input>
+      </ion-item>
+
+
       <div padding class="exists">
         <button ion-button *ngIf="!exists" color="danger" (click)="addConnect()" block>ADD CONTACT</button>
         <span *ngIf="exists">CONTACT EXISTS</span>
