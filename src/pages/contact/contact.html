@@ -7,8 +7,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
-    <ion-item *ngFor="let connect of connects | async" (click)="showOptions(connect.$key, connect.name)">
+    <ion-item *ngFor="let connect of connectsList" (click)="showOptions(connect.$key, connect.name)">
       <ion-avatar item-left>
         <img src="{{connect.photo.thumb_link}}">
       </ion-avatar>
@@ -17,4 +18,5 @@
       <p>Met at {{connect.eventName}}</p>
     </ion-item>
   </ion-list>
+  <p class="none" *ngIf="connectsList.length < 1">No connects found.</p>
 </ion-content>
