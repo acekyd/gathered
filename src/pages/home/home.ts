@@ -3,6 +3,7 @@ import { NavController, NavParams, Platform } from 'ionic-angular';
 
 import { MeetupService } from '../../providers/meetup-service';
 import { EventPage} from '../event/event';
+import { UserPage} from '../user/user';
 import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
 
 @Component({
@@ -47,8 +48,21 @@ export class HomePage {
       this.user = data;
       localStorage.setItem('user', JSON.stringify(this.user));
       console.log("checking firebase");
-      var fb_user = this.af.list('/users/'+this.user.id);
-      console.log(fb_user);
+      var fb_user = this.af.object('/users/'+this.user.id);
+      fb_user.subscribe(snapshot => {
+          //console.log('Snapshot type result: ' + snapshot[type]);
+          //this.index = snapshot[type];
+          console.log(snapshot);
+          if(typeof snapshot.$value !== 'undefined')
+          {
+            this.navCtrl.setRoot(UserPage, {
+              user: this.user,
+            });
+          }
+          else {
+            localStorage.setItem('user', JSON.stringify(snapshot));
+          }
+      });
     });
   }
 

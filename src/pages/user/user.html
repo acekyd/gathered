@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Gathered
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <h2 class="title">
+      To use Gathered, provide details for connects to reach you on :)
+    </h2>
+    <ion-list>
+
+      <ion-item>
+        <ion-label fixed>Name</ion-label>
+        <ion-input type="text" name="name" [value]="user.name" (input)="user.name = $event.target.value" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>City</ion-label>
+        <ion-input type="text" name="city" [value]="user.city" (input)="user.city = $event.target.value" readonly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Bio</ion-label>
+        <ion-textarea elastic [value]="user.bio" (input)="user.bio = $event.target.value"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Phone</ion-label>
+        <ion-input type="text" name="phone" [value]="user.phone" (input)="user.phone = $event.target.value"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Email</ion-label>
+        <ion-input type="email" name="email" [value]="user.email" (input)="user.email = $event.target.value"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Twitter @</ion-label>
+        <ion-input type="text" name="twitter" [value]="user.twitter" (input)="user.twitter = $event.target.value"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>Facebook Url</ion-label>
+        <ion-input type="url" name="facebook" [value]="user.facebook" (input)="user.facebook = $event.target.value"></ion-input>
+      </ion-item>
+
+      <div padding class="exists">
+        <button ion-button *ngIf="!exists" color="danger" (click)="addProfile()" block>SAVE PROFILE</button>
+      </div>
+    </ion-list>
+</ion-content>
