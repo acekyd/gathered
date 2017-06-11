@@ -25,9 +25,7 @@
 			<ion-card-title>
 			  {{meetup.name}}
 			  </ion-card-title>
-			<p>
-			  {{meetup.plain_text_description}}
-			</p>
+			<p [innerHTML]="meetup.description"></p>
 		  </ion-card-content>
 		  <ion-row no-padding>
 			  <ion-col>
@@ -50,6 +48,7 @@
 			  </ion-col> -->
 			</ion-row>
 		</ion-card>
+		<ion-spinner *ngIf="!groups" color="danger"></ion-spinner>
 	  </ion-list>
 
 	 	<ion-list *ngSwitchCase="'events'">
@@ -58,9 +57,7 @@
 					<ion-card-title>{{event.name}}</ion-card-title>
 					<p *ngIf="event.venue"><small><ion-icon name='pin' item-left color="danger"></ion-icon> {{event.venue.name}} - {{event.venue.address_1}}, {{event.venue.localized_country_name}}. </small></p>
 					<hr>
-					<p>
-						{{event.plain_text_description}}
-					</p>
+					<p [innerHTML]="event.description"></p>
 				</ion-card-content>
 				<ion-item>
 					<ion-badge item-right color="danger">{{event.time  | date: 'EEE, MMM d. HH:mma'}}</ion-badge>

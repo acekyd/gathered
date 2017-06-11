@@ -20,6 +20,7 @@ export class EventPage {
 	public event: any;
   public user: any;
   public checked_in = false;
+  public count = 0;
 
   check_ins: FirebaseListObservable<any>;
 
@@ -36,6 +37,7 @@ export class EventPage {
         var self = this;
         self.check_ins.forEach(function(element) {
             element.forEach(function(elem){
+              self.count++;
                if(self.user.id === elem.id)
                {
                   self.checked_in = true;
@@ -43,7 +45,6 @@ export class EventPage {
               })
           })
   	  }
-
   }
 
   loadEvent(urlname, id){

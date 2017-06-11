@@ -18,5 +18,6 @@
       <p>Met at {{connect.eventName}}</p>
     </ion-item>
   </ion-list>
+  <ion-spinner *ngIf="connectsList.length < 1" color="danger"></ion-spinner>
   <p class="none" *ngIf="connectsList.length < 1">No connects found.</p>
 </ion-content>

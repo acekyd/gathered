@@ -31,7 +31,6 @@ export class ContactPage {
 	          })
 	    })
 	console.log(this.connectsList);
-	console.log("bimpe");
   }
 
   getItems(searchbar) {

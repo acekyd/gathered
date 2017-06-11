@@ -12,9 +12,7 @@
 				<ion-card-title>{{dashboard.ongoing_event.name}}</ion-card-title>
 				<p *ngIf="dashboard.ongoing_event.venue"><small><ion-icon name='pin' item-left color="danger"></ion-icon> {{dashboard.ongoing_event.venue.name}} - {{dashboard.ongoing_event.venue.address_1}}, {{dashboard.ongoing_event.venue.localized_country_name}}. </small></p>
 				<hr>
-				<p>
-					{{dashboard.ongoing_event.simple_html_description}}
-				</p>
+				<p [innerHTML]="dashboard.ongoing_event.description"></p>
 			</ion-card-content>
 			<ion-item>
 				<ion-badge item-right color="danger">{{dashboard.ongoing_event.time  | date: 'EEE, MMM d. HH:mma'}}</ion-badge>
@@ -29,12 +27,13 @@
 				<ion-card-title>{{dashboard.next_event.name}}</ion-card-title>
 				<p *ngIf="dashboard.next_event.venue"><small><ion-icon name='pin' item-left color="danger"></ion-icon> {{dashboard.next_event.venue.name}} - {{dashboard.next_event.venue.address_1}}, {{dashboard.next_event.venue.localized_country_name}}. </small></p>
 				<hr>
-				<p>
-					{{dashboard.next_event.simple_html_description}}
-				</p>
+				<p [innerHTML]="dashboard.next_event.description"></p>
 			</ion-card-content>
 			<ion-item>
 				<ion-badge item-right color="danger">{{dashboard.next_event.time  | date: 'EEE, MMM d. HH:mma'}}</ion-badge>
+			</ion-item>
+			<ion-item>
+				<button padding ion-button color="danger" (click)="openEvent(dashboard.next_event.group.urlname, dashboard.next_event.id)" full>VIEW EVENT</button>
 			</ion-item>
 		</ion-card>
 		<ion-card *ngIf="dashboard.last_event">
@@ -43,13 +42,12 @@
 				<ion-card-title>{{dashboard.last_event.name}}</ion-card-title>
 				<p><small><ion-icon name='pin' item-left color="danger"></ion-icon> {{dashboard.last_event.venue.name}} - {{dashboard.last_event.venue.address_1}}, {{dashboard.last_event.venue.localized_country_name}}. </small></p>
 				<hr>
-				<p>
-					{{dashboard.last_event.simple_html_description}}
-				</p>
+				<p [innerHTML]="dashboard.last_event.description"></p>
 			</ion-card-content>
 			<ion-item>
 				<ion-badge item-right color="danger">{{dashboard.last_event.time | date: 'EEE, MMM d. HH:mma'}}</ion-badge>
 			</ion-item>
 		</ion-card>
 	</div>
+	<ion-spinner *ngIf="!dashboard" color="danger"></ion-spinner>
 </ion-content>
