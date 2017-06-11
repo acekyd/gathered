@@ -9,6 +9,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { GroupsPage } from '../pages/groups/groups';
 import { ContactPage } from '../pages/contact/contact';
 import { MorePage } from '../pages/more/more';
+import { ProfilePage } from '../pages/profile/profile';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { Login } from '../pages/login/login';
@@ -44,7 +45,8 @@ export const firebaseConfig = {
     TabsPage,
     MorePage,
     EventPage,
-    UserPage
+    UserPage,
+    ProfilePage
   ],
   imports: [
     HttpModule,
@@ -64,7 +66,8 @@ export const firebaseConfig = {
     TabsPage,
     MorePage,
     EventPage,
-    UserPage
+    UserPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,

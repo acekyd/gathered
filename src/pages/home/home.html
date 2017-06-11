@@ -32,9 +32,6 @@
 			<ion-item>
 				<ion-badge item-right color="danger">{{dashboard.next_event.time  | date: 'EEE, MMM d. HH:mma'}}</ion-badge>
 			</ion-item>
-			<ion-item>
-				<button padding ion-button color="danger" (click)="openEvent(dashboard.next_event.group.urlname, dashboard.next_event.id)" full>VIEW EVENT</button>
-			</ion-item>
 		</ion-card>
 		<ion-card *ngIf="dashboard.last_event">
 			<ion-card-content>

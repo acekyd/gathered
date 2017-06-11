@@ -3,6 +3,8 @@ import { NavController, AlertController, ActionSheetController, ToastController 
 import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
+import { ProfilePage } from '../profile/profile';
+
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html'
@@ -64,6 +66,12 @@ export class ContactPage {
 		  title: 'What do you want to do?',
 		  buttons: [
 		  	 {
+		  	 	text: 'View Connect',
+		  	 	handler: () => {
+		  	 		this.viewProfile(connect);
+		  	 	}
+		  	 },
+		  	 {
 		  	 	text: 'Share Connect',
 		  	 	handler: () => {
 		  	 		// share(message, subject, file, url)
@@ -103,5 +111,12 @@ export class ContactPage {
 					 toast.present();
 				}
 		  );
+	 }
+
+	 public viewProfile(connect)
+	 {
+	   this.navCtrl.push(ProfilePage, {
+	        connect: connect,
+	    });
 	 }
 }

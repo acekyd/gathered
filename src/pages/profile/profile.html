@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Gathered
+    </ion-title>
+    <ion-buttons end>
+	    <button ion-button icon-only (click)="openShare(connect)">
+	    	<ion-icon name="share"></ion-icon>
+	    </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+	<figure class="snip1344">
+		<img src="{{connect.photo.photo_link}}" alt="profile-sample1" class="background"/>
+		<img src="{{connect.photo.photo_link}}" alt="profile-sample1" class="profile"/>
+	  <figcaption>
+	    <h3>{{connect.name}}<span>Met at {{connect.eventName}}</span></h3>
+	    <div class="icons">
+	    	<a href="#" *ngIf="connect.phone" (click)="launch('tel:'+connect.phone)"><ion-icon name="call"></ion-icon></a>
+	    	<a href="#" *ngIf="connect.email" (click)="launch('mailto:'+connect.email)"> <ion-icon name="mail"></ion-icon></a>
+	    	<a href="#" *ngIf="connect.twitter" (click)="launch('https://www.twitter.com/'+connect.twitter)"> <ion-icon name="logo-twitter"></ion-icon></a>
+	    	<a href="#" *ngIf="connect.facebook" (click)="launch('https://www.facebook.com/'+connect.facebook)"> <ion-icon name="logo-facebook"></ion-icon></a>
+	    </div>
+	  </figcaption>
+	</figure>
+
+	<ion-card *ngIf="connect.bio">
+	  <ion-card-header>
+	    BIO
+	  </ion-card-header>
+	  <ion-card-content>
+	    {{connect.bio}}
+	  </ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="connect.city">
+	  <ion-card-header>
+	    LOCATION
+	  </ion-card-header>
+	  <ion-card-content>
+	    {{connect.city}}, {{connect.localized_country_name}}.
+	  </ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="connect.email">
+	  <ion-card-header>
+	    EMAIL
+	  </ion-card-header>
+	  <ion-card-content>
+	    {{connect.email}}
+	  </ion-card-content>
+	</ion-card>
+
+	<ion-card *ngIf="connect.phone">
+	  <ion-card-header>
+	    PHONE
+	  </ion-card-header>
+	  <ion-card-content>
+	    {{connect.phone}}
+	  </ion-card-content>
+	</ion-card>
+
+</ion-content>
