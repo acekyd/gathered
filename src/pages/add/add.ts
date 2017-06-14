@@ -38,8 +38,8 @@ export class AddPage {
 
   public addConnect() {
 
-  	console.log(this.connects);
-  	console.log(this.contact.id);
+  	//console.log(this.connects);
+  	//console.log(this.contact.id);
 
   		//remove $key
 	  	delete this.contact.$key;

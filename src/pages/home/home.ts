@@ -47,12 +47,10 @@ export class HomePage {
     .then(data => {
       this.user = data;
       localStorage.setItem('user', JSON.stringify(this.user));
-      console.log("checking firebase");
+      //console.log("checking firebase");
       var fb_user = this.af.object('/users/'+this.user.id);
       fb_user.subscribe(snapshot => {
-          //console.log('Snapshot type result: ' + snapshot[type]);
-          //this.index = snapshot[type];
-          console.log(snapshot);
+          //console.log(snapshot);
           if(typeof snapshot.$value !== 'undefined')
           {
             this.navCtrl.setRoot(UserPage, {

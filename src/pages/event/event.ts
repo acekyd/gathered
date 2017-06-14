@@ -51,7 +51,7 @@ export class EventPage {
     this.meetupService.loadEvent(urlname, id)
     .then(data => {
       this.event = data;
-      console.log(this.event);
+      //console.log(this.event);
     });
   }
 
@@ -68,13 +68,13 @@ export class EventPage {
         text: 'Add to Connect',
         handler: () => {
           this.addContactForm(eventId, eventName, contact);
-          console.log('Navigate to add contacts');
+          //console.log('Navigate to add contacts');
         }
        },{
         text: 'Cancel',
         role: 'cancel',
         handler: () => {
-          console.log('Cancel clicked');
+          //console.log('Cancel clicked');
         }
        }
       ]

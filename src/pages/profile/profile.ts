@@ -15,7 +15,7 @@ export class ProfilePage {
  constructor(public navCtrl: NavController,  public navParams: NavParams, public platform: Platform, public iab: InAppBrowser, private socialSharing: SocialSharing ) {
   		this.access_token = localStorage.getItem("access_token");
       this.connect = navParams.get('connect');
-      console.log(this.connect);
+      //console.log(this.connect);
   }
 
   launch(url) {

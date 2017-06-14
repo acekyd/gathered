@@ -18,25 +18,25 @@ export class ContactPage {
   constructor(public navCtrl: NavController, public alertCtrl: AlertController, public af: AngularFireDatabase, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, private socialSharing: SocialSharing) {
 	 this.user = JSON.parse(localStorage.getItem("user"));
 	 this.connects = af.list('/connects/'+this.user.id);
-	 console.log(this.connects);
+	 //console.log(this.connects);
 	 this.initializeItems();
   }
 
   initializeItems(){
   	this.connectsList = [];
-	 console.log(this.connects);
+	 //console.log(this.connects);
 	 var self = this;
 	  	self.connects.forEach(function(element) {
 	        element.forEach(function(elem){
 	           self.connectsList.push(elem);
-	           console.log(self.connectsList);
+	           //console.log(self.connectsList);
 	          })
 	    })
-	console.log(this.connectsList);
+	//console.log(this.connectsList);
   }
 
   getItems(searchbar) {
-  	console.log("you are mad");
+  	//console.log("you are mad");
     // Reset items back to all of the items
     this.initializeItems();
 
@@ -57,7 +57,7 @@ export class ContactPage {
       }
     });
 
-    console.log(q, this.connectsList.length);
+    //console.log(q, this.connectsList.length);
 
   }
 
@@ -94,7 +94,7 @@ export class ContactPage {
 				text: 'Cancel',
 				role: 'cancel',
 				handler: () => {
-				  console.log('Cancel clicked');
+				  //console.log('Cancel clicked');
 				}
 			 }
 		  ]

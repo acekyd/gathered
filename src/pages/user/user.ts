@@ -24,7 +24,7 @@ export class UserPage {
 
   public addProfile() {
 
-  	  console.log(this.user);
+  	  //console.log(this.user);
 	  	this.account.set(this.user);
   	  	let toast = this.toastCtrl.create({
   			message: 'Profile details set successfully',

@@ -8,8 +8,8 @@
 	<div *ngIf="dashboard">
 		<ion-card *ngIf="dashboard.ongoing_event"><!-- add ng-click here to check in to event -->
 			<ion-card-content>
-				<ion-card-header>ONGOING EVENT: {{dashboard.ongoing_event.group.name}}</ion-card-header>
-				<ion-card-title>{{dashboard.ongoing_event.name}}</ion-card-title>
+				<ion-card-header >ONGOING EVENT: {{dashboard.ongoing_event.group.name}}</ion-card-header>
+				<ion-card-title *ngIf="dashboard.ongoing_event.name">{{dashboard.ongoing_event.name}}</ion-card-title>
 				<p *ngIf="dashboard.ongoing_event.venue"><small><ion-icon name='pin' item-left color="danger"></ion-icon> {{dashboard.ongoing_event.venue.name}} - {{dashboard.ongoing_event.venue.address_1}}, {{dashboard.ongoing_event.venue.localized_country_name}}. </small></p>
 				<hr>
 				<p [innerHTML]="dashboard.ongoing_event.description"></p>
@@ -23,7 +23,7 @@
 		</ion-card>
 		<ion-card *ngIf="dashboard.next_event">
 			<ion-card-content>
-				<ion-card-header>NEXT EVENT: {{dashboard.next_event.group.name}}</ion-card-header>
+				<ion-card-header *ngIf="dashboard.next_event.name">NEXT EVENT: {{dashboard.next_event.group.name}}</ion-card-header>
 				<ion-card-title>{{dashboard.next_event.name}}</ion-card-title>
 				<p *ngIf="dashboard.next_event.venue"><small><ion-icon name='pin' item-left color="danger"></ion-icon> {{dashboard.next_event.venue.name}} - {{dashboard.next_event.venue.address_1}}, {{dashboard.next_event.venue.localized_country_name}}. </small></p>
 				<hr>
@@ -36,8 +36,8 @@
 		<ion-card *ngIf="dashboard.last_event">
 			<ion-card-content>
 				<ion-card-header>LAST EVENT: {{dashboard.last_event.group.name}}</ion-card-header>
-				<ion-card-title>{{dashboard.last_event.name}}</ion-card-title>
-				<p><small><ion-icon name='pin' item-left color="danger"></ion-icon> {{dashboard.last_event.venue.name}} - {{dashboard.last_event.venue.address_1}}, {{dashboard.last_event.venue.localized_country_name}}. </small></p>
+				<ion-card-title *ngIf="dashboard.last_event.name">{{dashboard.last_event.name}}</ion-card-title>
+				<p *ngIf="dashboard.last_event.venue"><small><ion-icon name='pin' item-left color="danger"></ion-icon> {{dashboard.last_event.venue.name}} - {{dashboard.last_event.venue.address_1}}, {{dashboard.last_event.venue.localized_country_name}}. </small></p>
 				<hr>
 				<p [innerHTML]="dashboard.last_event.description"></p>
 			</ion-card-content>
