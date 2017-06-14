@@ -35,14 +35,13 @@ export class MeetupService {
           .map(res => res.json())
           .subscribe(data => {
             this.dashboard = data;
-            console.log(this.dashboard);
+            //console.log(this.dashboard);
             resolve(this.dashboard);
           });
       });
   }
 
   loadGroups() {
-    //console.log('Hello Meetup Groups');
     if (this.groups) {
         // already loaded data
         return Promise.resolve(this.groups);
@@ -61,7 +60,6 @@ export class MeetupService {
   }
 
   loadEvents() {
-    console.log('Hello Meetup Groups');
     if (this.events) {
         // already loaded data
         return Promise.resolve(this.events);
@@ -80,8 +78,6 @@ export class MeetupService {
   }
 
   loadEvent(urlname, id) {
-    console.log('Hello Meetup Event');
-
       // don't have the data yet
       return new Promise(resolve => {
         this.http.get('https://api.meetup.com/'+urlname+'/events/'+id+'?access_token='+this.access_token)

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, Platform } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 import { MeetupService } from '../../providers/meetup-service';
 import { EventPage} from '../event/event';
 import { UserPage} from '../user/user';
-import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
+import {AngularFireDatabase} from 'angularfire2/database';
 
 @Component({
   selector: 'page-home',

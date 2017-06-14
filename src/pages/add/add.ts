@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, Platform, AlertController, ToastController } from 'ionic-angular';
-import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
+import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import {AngularFireDatabase} from 'angularfire2/database';
 
 @Component({
   selector: 'page-add',
