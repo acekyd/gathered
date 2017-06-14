@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, HttpModule, RequestOptions, Headers } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 /*
@@ -20,7 +20,7 @@ export class MeetupService {
   public access_token = localStorage.getItem("access_token");
 
   constructor(public http: Http) {
-    console.log('Hello MeetupService Provider');
+    //console.log('Hello MeetupService Provider');
   }
 
   loadDashboard() {
@@ -42,7 +42,7 @@ export class MeetupService {
   }
 
   loadGroups() {
-    console.log('Hello Meetup Groups');
+    //console.log('Hello Meetup Groups');
     if (this.groups) {
         // already loaded data
         return Promise.resolve(this.groups);
@@ -54,7 +54,7 @@ export class MeetupService {
           .map(res => res.json())
           .subscribe(data => {
             this.groups = data;
-            console.log(this.groups);
+            //console.log(this.groups);
             resolve(this.groups);
           });
       });
@@ -73,7 +73,7 @@ export class MeetupService {
           .map(res => res.json())
           .subscribe(data => {
             this.events = data;
-            console.log(this.events);
+            //console.log(this.events);
             resolve(this.events);
           });
       });
@@ -88,7 +88,7 @@ export class MeetupService {
           .map(res => res.json())
           .subscribe(data => {
             this.event = data;
-            console.log(this.event);
+            //console.log(this.event);
             resolve(this.event);
           });
       });
@@ -106,7 +106,7 @@ export class MeetupService {
           .map(res => res.json())
           .subscribe(data => {
             this.auth_user = data;
-            console.log(this.auth_user);
+            //console.log(this.auth_user);
             resolve(this.auth_user);
           });
       });
