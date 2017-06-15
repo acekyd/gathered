@@ -23,6 +23,7 @@ export class EventPage {
   public count = 0;
 
   check_ins: FirebaseListObservable<any>;
+  public checkInsList: Array<any>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public meetupService: MeetupService, af: AngularFireDatabase, public actionSheetCtrl: ActionSheetController) {
   	this.access_token = localStorage.getItem("access_token");
@@ -44,7 +45,46 @@ export class EventPage {
                }
               })
           })
+        this.initializeItems();
   	  }
+  }
+
+  initializeItems(){
+    this.checkInsList = [];
+   //console.log(this.check_ins);
+   var self = this;
+      self.check_ins.forEach(function(element) {
+          element.forEach(function(elem){
+             self.checkInsList.push(elem);
+             //console.log(self.checkInsList);
+            })
+      })
+  //console.log(this.checkInsList);
+  }
+
+  getItems(searchbar) {
+    // Reset items back to all of the items
+    this.initializeItems();
+
+    // set q to the value of the searchbar
+    var q = searchbar.srcElement.value;
+
+    // if the value is an empty string don't filter the items
+    if (!q) {
+      return;
+    }
+
+    this.checkInsList = this.checkInsList.filter((v) => {
+      if(v.name && q) {
+        if (v.name.toLowerCase().indexOf(q.toLowerCase()) > -1 || v.bio.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
+
+    //console.log(q, this.checkInsList.length);
+
   }
 
   loadEvent(urlname, id){

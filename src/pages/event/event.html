@@ -24,8 +24,9 @@
 	  <ion-card-header>
 	    Checked-In Members
 	  </ion-card-header>
+	  <ion-searchbar *ngIf="count" (ionInput)="getItems($event)"></ion-searchbar>
 	  <ion-list *ngIf="check_ins">
-		  <ion-item *ngFor="let checkin of check_ins | async" (click)="showOptions(event.id, event.name, checkin)">
+		  <ion-item *ngFor="let checkin of checkInsList" (click)="showOptions(event.id, event.name, checkin)">
 		    <ion-avatar item-left>
 		      <img src="{{checkin.photo.thumb_link}}">
 		    </ion-avatar>
@@ -34,6 +35,7 @@
 		  </ion-item>
 	  </ion-list>
 	  <p class="none" *ngIf="!count">No one has checked in yet!</p>
+	  <p class="none" *ngIf="checkInsList.length < 1">No match found!</p>
 	</ion-card>
 
 	<ion-spinner *ngIf="!event" color="danger"></ion-spinner>
