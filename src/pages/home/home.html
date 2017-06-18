@@ -44,6 +44,9 @@
 			<ion-item>
 				<ion-badge item-right color="danger">{{dashboard.last_event.time | date: 'EEE, MMM d. HH:mma'}}</ion-badge>
 			</ion-item>
+			<ion-item>
+				<button padding ion-button color="danger" (click)="openEvent(dashboard.last_event.group.urlname, dashboard.last_event.id)" full>VIEW EVENT</button>
+			</ion-item>
 		</ion-card>
 	</div>
 	<ion-spinner *ngIf="!dashboard" color="danger"></ion-spinner>
