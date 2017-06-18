@@ -13,8 +13,10 @@
 
 <ion-content>
 	<figure class="snip1344">
-		<img src="{{connect.photo.photo_link}}" alt="profile-sample1" class="background"/>
-		<img src="{{connect.photo.photo_link}}" alt="profile-sample1" class="profile"/>
+		<img *ngIf="connect.photo" src="{{connect.photo.photo_link}}" alt="profile-sample1" class="background"/>
+		<img *ngIf="connect.photo" src="{{connect.photo.photo_link}}" alt="profile-sample1" class="profile"/>
+		<img *ngIf="!connect.photo" src="../assets/img/avatar.gif" alt="profile-sample1" class="background"/>
+		<img *ngIf="!connect.photo" src="../assets/img/avatar.gif" alt="profile-sample1" class="profile"/>
 	  <figcaption>
 	    <h3>{{connect.name}}<span>Met at {{connect.eventName}}</span></h3>
 	    <div class="icons">

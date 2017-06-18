@@ -10,9 +10,12 @@
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let connect of connectsList" (click)="showOptions(connect)">
-      <ion-avatar item-left>
+      <ion-avatar *ngIf="connect.photo" item-left>
         <img src="{{connect.photo.thumb_link}}">
       </ion-avatar>
+      <ion-avatar *ngIf="!connect.photo" item-left>
+          <img src="../assets/img/avatar.gif">
+        </ion-avatar>
       <h2>{{connect.name}}</h2>
       <h3>{{connect.bio}}</h3>
       <p>Met at {{connect.eventName}}</p>
