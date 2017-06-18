@@ -30,7 +30,7 @@
 		    <ion-avatar item-left>
 		      <img src="{{checkin.photo.thumb_link}}">
 		    </ion-avatar>
-		    <h2>{{checkin.name}} - <small *ngIf="checkin.id == user.id">You</small></h2>
+		    <h2>{{checkin.name}}<small *ngIf="checkin.id == user.id"> - You</small></h2>
 		    <p *ngIf="checkin.bio">{{checkin.bio}}</p>
 		  </ion-item>
 	  </ion-list>
