@@ -50,7 +50,7 @@ export class ContactPage {
 
     this.connectsList = this.connectsList.filter((v) => {
       if(v.name && q) {
-        if (v.name.toLowerCase().indexOf(q.toLowerCase()) > -1 || v.eventName.toLowerCase().indexOf(q.toLowerCase()) > -1 || v.bio.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+        if (v.name.toLowerCase().indexOf(q.toLowerCase()) > -1 || v.eventName.toLowerCase().indexOf(q.toLowerCase()) > -1 || (v.bio && v.bio.toLowerCase().indexOf(q.toLowerCase()) > -1)) {
           return true;
         }
         return false;
