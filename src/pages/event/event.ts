@@ -30,6 +30,7 @@ export class EventPage {
     this.user = JSON.parse(localStorage.getItem("user"));
   	this.urlname = navParams.get('urlname');
   	this.id = navParams.get('id');
+    this.checkInsList = [];
   	if(this.access_token)
   	  {
   	    this.loadEvent(this.urlname, this.id);
@@ -98,6 +99,7 @@ export class EventPage {
   checkIn(event_id)
   {
       this.check_ins.push(this.user);
+      this.initializeItems();
   }
 
   showOptions(eventId, eventName, contact) {
