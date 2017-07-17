@@ -49,6 +49,7 @@
 
       <div padding class="exists">
         <button ion-button *ngIf="!exists" color="danger" (click)="addProfile()" block>SAVE PROFILE</button>
+        <button ion-button *ngIf="exists" color="danger" (click)="addProfile()" block>UPDATE PROFILE</button>
       </div>
     </ion-list>
 </ion-content>

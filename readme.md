@@ -1,4 +1,4 @@
-#Gathered App
+# Gathered App
 
 Gathered is an open source mobile app built to help keep track of contacts and connects you make at your meetups with Gathered.
 
