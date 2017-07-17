@@ -18,7 +18,7 @@
 		<img *ngIf="!connect.photo" src="../assets/img/avatar.gif" alt="profile-sample1" class="background"/>
 		<img *ngIf="!connect.photo" src="../assets/img/avatar.gif" alt="profile-sample1" class="profile"/>
 	  <figcaption>
-	    <h3>{{connect.name}}<span>Met at {{connect.eventName}}</span></h3>
+	    <h3>{{connect.name}}<span *ngIf="!isUser">Met at {{connect.eventName}}</span></h3>
 	    <div class="icons">
 	    	<a href="#" *ngIf="connect.phone" (click)="launch('tel:'+connect.phone)"><ion-icon name="call"></ion-icon></a>
 	    	<a href="#" *ngIf="connect.email" (click)="launch('mailto:'+connect.email)"> <ion-icon name="mail"></ion-icon></a>
@@ -63,5 +63,7 @@
 	    {{connect.phone}}
 	  </ion-card-content>
 	</ion-card>
+
+	<button *ngIf="isUser" ion-button block color="primary" (click)="editProfile()" >Edit Profile</button>
 
 </ion-content>

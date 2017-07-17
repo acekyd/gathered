@@ -28,7 +28,7 @@ export class ContactPage {
 	 var self = this;
 	  	self.connects.forEach(function(element) {
 	        element.forEach(function(elem){
-	           self.connectsList.push(elem);
+						elem.id !== self.user.id ? self.connectsList.push(elem) : null;
 	           //console.log(self.connectsList);
 	          })
 	    })
