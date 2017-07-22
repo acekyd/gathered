@@ -25,6 +25,7 @@
 	    	<a href="#" *ngIf="connect.twitter" (click)="launch('https://www.twitter.com/'+connect.twitter)"> <ion-icon name="logo-twitter"></ion-icon></a>
 	    	<a href="#" *ngIf="connect.facebook" (click)="launch('https://www.facebook.com/'+connect.facebook)"> <ion-icon name="logo-facebook"></ion-icon></a>
 	    </div>
+	    <button *ngIf="isUser" ion-button block color="light" outline (click)="editProfile()" >Edit Profile</button>
 	  </figcaption>
 	</figure>
 
@@ -63,7 +64,5 @@
 	    {{connect.phone}}
 	  </ion-card-content>
 	</ion-card>
-
-	<button *ngIf="isUser" ion-button block color="primary" (click)="editProfile()" >Edit Profile</button>
 
 </ion-content>
