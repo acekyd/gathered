@@ -80,7 +80,7 @@ export class MeetupService {
   loadEvent(urlname, id) {
       // don't have the data yet
       return new Promise(resolve => {
-        this.http.get('/api'+urlname+'/events/'+id+'?access_token='+this.access_token)
+        this.http.get('/api/'+urlname+'/events/'+id+'?access_token='+this.access_token)
           .map(res => res.json())
           .subscribe(data => {
             this.event = data;
