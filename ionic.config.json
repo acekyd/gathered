@@ -1,5 +1,30 @@
 {
   "name": "Gathered2",
   "app_id": "",
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://api.meetup.com"
+    },
+    {
+      "path": "/dashboard",
+      "proxyUrl": "https://api.meetup.com/dashboard"
+    },
+    {
+      "path": "/userGroups",
+      "proxyUrl": "https://api.meetup.com/self/groups"
+    },
+    {
+      "path": "/userEvents",
+      "proxyUrl": "https://api.meetup.com/self/events"
+    },
+    {
+      "path": "/user",
+      "proxyUrl": "https://api.meetup.com/members/self"
+    }
+  ]
 }
