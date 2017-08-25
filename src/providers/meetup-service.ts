@@ -31,7 +31,7 @@ export class MeetupService {
 
       // don't have the data yet
       return new Promise(resolve => {
-        this.http.get('https://api.meetup.com/dashboard?is_simplehtml=true&fields=simple_html_description&access_token='+this.access_token)
+        this.http.get('/dashboard?is_simplehtml=true&fields=simple_html_description&access_token='+this.access_token)
           .map(res => res.json())
           .subscribe(data => {
             this.dashboard = data;
@@ -49,7 +49,7 @@ export class MeetupService {
 
       // don't have the data yet
       return new Promise(resolve => {
-        this.http.get('https://api.meetup.com/self/groups?fields=plain_text_description&access_token='+this.access_token)
+        this.http.get('/userGroups?fields=plain_text_description&access_token='+this.access_token)
           .map(res => res.json())
           .subscribe(data => {
             this.groups = data;
@@ -67,7 +67,7 @@ export class MeetupService {
 
       // don't have the data yet
       return new Promise(resolve => {
-        this.http.get('https://api.meetup.com/self/events?desc=false&fields=plain_text_description&access_token='+this.access_token)
+        this.http.get('/userEvents?desc=false&fields=plain_text_description&access_token='+this.access_token)
           .map(res => res.json())
           .subscribe(data => {
             this.events = data;
@@ -80,7 +80,7 @@ export class MeetupService {
   loadEvent(urlname, id) {
       // don't have the data yet
       return new Promise(resolve => {
-        this.http.get('https://api.meetup.com/'+urlname+'/events/'+id+'?access_token='+this.access_token)
+        this.http.get('/api'+urlname+'/events/'+id+'?access_token='+this.access_token)
           .map(res => res.json())
           .subscribe(data => {
             this.event = data;
@@ -98,7 +98,7 @@ export class MeetupService {
 
       // don't have the data yet
       return new Promise(resolve => {
-        this.http.get('https://api.meetup.com/members/self?access_token='+this.access_token)
+        this.http.get('/user?access_token='+this.access_token)
           .map(res => res.json())
           .subscribe(data => {
             this.auth_user = data;
