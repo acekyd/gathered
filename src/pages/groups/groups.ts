@@ -26,16 +26,30 @@ export class GroupsPage {
 
   loadGroups(){
     this.meetupService.loadGroups()
-    .then(data => {
-      this.groups = data;
+    .then((data: Array<any>) => {
+      this.groups = data.map((val) => {
+        //include a boolean to toggle readMore
+        return Object.assign({}, val, {more: false});
+      });
     });
   }
 
   loadEvents(){
     this.meetupService.loadEvents()
     .then(data => {
-      this.events = data;
+      this.events = data.map((val) => {
+        //include a boolean to toggle readMore
+        return Object.assign({}, val, {more: false});
+      });
     });
+  }
+
+  doo(val) {
+    console.log("kksa " +val);
+  }
+
+  toggleReadMore(val) {
+      val.more = !val.more;
   }
 
 }
