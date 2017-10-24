@@ -25,7 +25,9 @@
 			<ion-card-title>
 			  {{meetup.name}}
 			  </ion-card-title>
-			<p [innerHTML]="meetup.description"></p>
+			<p *ngIf="meetup.more" [innerHTML]="meetup.description"></p>
+			<p *ngIf="!meetup.more">{{meetup.plain_text_description | slice:0:100}}{{meetup.plain_text_description.length > 100 ? '...' : ''}}</p>
+			<p *ngIf="meetup.plain_text_description.length > 100" class="read-more" (click)="toggleReadMore(meetup)">{{meetup.more ? 'Less': 'More'}}</p>
 		  </ion-card-content>
 		  <ion-row no-padding>
 			  <ion-col>
@@ -57,7 +59,11 @@
 					<ion-card-title>{{event.name}}</ion-card-title>
 					<p *ngIf="event.venue"><small><ion-icon name='pin' item-left color="danger"></ion-icon> {{event.venue.name}} - {{event.venue.address_1}}, {{event.venue.localized_country_name}}. </small></p>
 					<hr>
-					<p [innerHTML]="event.description"></p>
+					<p *ngIf="event.more" [innerHTML]="event.description" ></p>
+					
+					<p *ngIf="!event.more">{{event.plain_text_description | slice:0:100}}{{event.plain_text_description.length > 100 ? '...' : ''}}</p>
+					<p *ngIf="event.plain_text_description.length > 100" class="read-more" (click)="toggleReadMore(event)">{{event.more ? 'Less': 'More'}}</p>
+
 				</ion-card-content>
 				<ion-item>
 					<ion-badge item-right color="danger">{{event.time  | date: 'EEE, MMM d. HH:mma'}}</ion-badge>

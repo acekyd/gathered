@@ -8,4 +8,8 @@ page-groups {
 	{
 		    border-color: map-get($colors, danger);
 	}
+
+	.read-more {
+		color: map-get($colors, danger );
+	}
 }
